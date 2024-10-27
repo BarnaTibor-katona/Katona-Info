@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js Komponensalapú fejlesztés</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <div id="app">    
+    <!-- A szülő komponens, amely tartalmazza a gyermek komponenst -->
+    <greeting-component></greeting-component>
+  </div>
+
+  <script>
+    // Gyermek komponens létrehozása
+    Vue.component('greeting-component',{template: '<h1>Üdvözlet a Vue.js világában!</h1>'}); 
+    // A template határozza meg a megjelenítést
+
+    // Szülő komponens létrehozása (a Vue instance)
+    new Vue({
+      el: '#app'
+    });
+  </script>
+</body>
+</html>
+
+<!-- Vue.component(): Ezzel hozzuk létre a komponenst. Az első paraméter a komponens neve (greeting-component), 
+ a második a konfiguráció, ahol a template adja meg, mit kell megjeleníteni.
+A szülő komponens (new Vue) a #app elemhez kapcsolódik, amely tartalmazza a greeting-component gyermek komponenst.-->

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js Komponensalapú fejlesztés</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <div id="app">    
+    <!-- A szülő komponens, amely tartalmazza a gyermek komponenst -->
+    <greeting-component :message="greetingMessage"></greeting-component>
+    <button @click="changeMessage">Üzenet változtatása</button>
+  </div>
+
+  <script>
+    // Gyermek komponens létrehozása
+    Vue.component('greeting-component', {
+      props: ['message'], // A prop-on keresztül átadott adat fogadása
+      template: '<h1>{{ message }}</h1>' // A message változó megjelenítése
+    });
+
+    // Szülő komponens létrehozása (a Vue instance)
+    new Vue({
+      el: '#app',
+      data: {
+        greetingMessage: 'Üdvözlet a Vue.js világában!' // Kezdeti üzenet
+      },
+      methods: {
+        changeMessage() {
+          this.greetingMessage = 'Az üzenet megváltozott!'; // Új üzenet beállítása
+        }
+      }
+    });
+  </script>
+</body>
+</html>
